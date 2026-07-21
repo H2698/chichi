@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth;}
+html,body{margin:0;padding:0;background:#F8F4ED;}
+a{color:#2B2723;text-decoration:none;}
+a:hover{color:#A98B5F;}
+@keyframes dressFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes ribbonSway{0%,100%{transform:translateX(-50%) rotate(-4deg)}50%{transform:translateX(-50%) rotate(4deg)}}
+@keyframes petalRise{0%{transform:translateY(0) rotate(0deg);opacity:0}15%{opacity:.7}85%{opacity:.5}100%{transform:translateY(-90px) rotate(140deg);opacity:0}}
+@keyframes scrollDot{0%{transform:translateY(0);opacity:1}70%{transform:translateY(18px);opacity:0}100%{transform:translateY(0);opacity:0}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}}
+</style>
+</helmet>
+<div id="accueil" data-screen-label="Accueil" style="position:relative;min-height:100vh;overflow:hidden;background:radial-gradient(1100px 600px at 72% 62%, #F2E9DB 0%, rgba(242,233,219,0) 60%), #F8F4ED;font-family:'Jost',sans-serif;color:#2B2723;">
+  <nav ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 52px;box-sizing:border-box;transition:background .4s ease, padding .4s ease, box-shadow .4s ease;">
+    <a href="#accueil" aria-label="Luxury Dress by Chichii — Accueil" style="display:flex;align-items:center;gap:14px;">
+      <img src="uploads/asset/logo/503971967_18048174587386881_2036036649405026795_n-Photoroom.png" alt="Logo By Chichii" style="height:52px;width:auto;display:block;mix-blend-mode:multiply;">
+      <span style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#6E6357;">Luxury Dress by Chichii</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:36px;">
+      <a href="#accueil" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Accueil</a>
+      <a href="#galerie" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Galerie</a>
+      <a href="#contact" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Contact</a>
+      <button aria-label="Ouvrir le menu" style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(169,139,95,0.55);background:rgba(255,255,255,0.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;" style-hover="border-color:#A98B5F;background:#fff;">
+        <span style="display:block;width:16px;height:1px;background:#2B2723;"></span>
+        <span style="display:block;width:10px;height:1px;background:#A98B5F;"></span>
+      </button>
+    </div>
+  </nav>
+  
+  <div style="display:flex;flex-wrap:wrap;align-items:center;min-height:100vh;padding:130px 0 40px 0;box-sizing:border-box;">
+    <div style="flex:1 1 420px;min-width:320px;max-width:660px;padding:0 20px 40px 108px;box-sizing:border-box;position:relative;z-index:40;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+        <span style="display:block;width:44px;height:1px;background:#B69460;"></span>
+        <span style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#A98B5F;">Location de robes haute couture</span>
+      </div>
+      <h1 style="margin:0 0 28px 0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(46px,5vw,78px);line-height:1.04;letter-spacing:1px;text-transform:uppercase;text-wrap:balance;">
+        L'élégance<br>pour chaque<br><em style="font-style:italic;color:#A98B5F;">Occasion</em>
+      </h1>
+      <p style="margin:0 0 40px 0;max-width:420px;font-size:16px;font-weight:300;line-height:1.75;color:#5C5348;text-wrap:pretty;">Découvrez une sélection raffinée de robes pour mariages, soirées, fiançailles et événements d'exception.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;">
+        <a href="#collections" style="display:inline-flex;align-items:center;gap:10px;padding:17px 32px;background:#A98B5F;color:#FBF8F2;font-size:11px;letter-spacing:3px;text-transform:uppercase;border-radius:999px;box-shadow:0 14px 30px rgba(169,139,95,0.30);" style-hover="background:#96794E;color:#fff;">Découvrir la collection</a>
+        <a href="https://wa.me/{{ waNumber }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:17px 32px;border:1px solid rgba(169,139,95,0.6);color:#2B2723;font-size:11px;letter-spacing:3px;text-transform:uppercase;border-radius:999px;background:rgba(255,255,255,0.35);" style-hover="border-color:#A98B5F;background:#fff;">Réserver maintenant</a>
+      </div>
+    </div>
+    <div ref="{{ sceneRef }}" style="flex:1.25 1 480px;min-width:320px;position:relative;height:660px;">
+      <div aria-hidden="true" style="position:absolute;left:50%;bottom:40px;transform:translateX(-50%);width:600px;height:320px;background:radial-gradient(closest-side, rgba(213,183,135,0.38), rgba(213,183,135,0) 72%);z-index:1;"></div>
+      <sc-if value="{{ showRibbons }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="position:absolute;left:50%;bottom:110px;width:580px;height:210px;border:1px solid rgba(182,148,96,0.45);border-radius:50%;z-index:8;animation:ribbonSway 16s ease-in-out infinite;transform:translateX(-50%);"></div>
+        <div aria-hidden="true" style="position:absolute;left:50%;bottom:150px;width:500px;height:160px;border:1px solid rgba(182,148,96,0.28);border-radius:50%;z-index:45;animation:ribbonSway 22s ease-in-out infinite reverse;transform:translateX(-50%);"></div>
+      </sc-if>
+      <span aria-hidden="true" style="position:absolute;left:26%;bottom:300px;width:6px;height:6px;border-radius:50%;background:#C9A96B;z-index:12;animation:petalRise 11s ease-in-out infinite;"></span>
+      <span aria-hidden="true" style="position:absolute;left:70%;bottom:220px;width:5px;height:5px;border-radius:2px;background:#B69460;z-index:12;animation:petalRise 14s 2s ease-in-out infinite;"></span>
+      <span aria-hidden="true" style="position:absolute;left:58%;bottom:420px;width:4px;height:4px;border-radius:50%;background:#D3B57E;z-index:12;animation:petalRise 9s 4s ease-in-out infinite;"></span>
+      <span aria-hidden="true" style="position:absolute;left:38%;bottom:180px;width:5px;height:5px;border-radius:50%;background:#C9A96B;z-index:12;animation:petalRise 13s 6s ease-in-out infinite;"></span>
+      <img src="uploads/asset/founder/poduim.png" alt="" aria-hidden="true" style="position:absolute;left:50%;bottom:14px;transform:translateX(-50%);width:450px;z-index:40;pointer-events:none;">
+      <div aria-hidden="true" style="position:absolute;left:50%;bottom:252px;transform:translateX(-50%);width:210px;height:36px;background:radial-gradient(closest-side, rgba(60,50,35,0.22), rgba(60,50,35,0) 75%);z-index:55;"></div>
+      <div ref="{{ dressRef }}" style="position:absolute;left:50%;bottom:258px;margin-left:-150px;width:300px;z-index:60;will-change:transform;">
+        <img src="uploads/03-seraphine-Photoroom.png" alt="Robe haute couture Séraphine portée par la fondatrice" style="display:block;width:100%;height:auto;filter:drop-shadow(0 24px 30px rgba(80,62,38,0.28));animation:dressFloat 7s ease-in-out infinite;-webkit-mask-image:linear-gradient(to bottom,#000 78%,rgba(0,0,0,0) 99%);mask-image:linear-gradient(to bottom,#000 78%,rgba(0,0,0,0) 99%);">
+      </div>
+      <sc-for list="{{ dresses }}" as="d" hint-placeholder-count="6">
+        <div ref="{{ cardRef }}" data-idx="{{ $index }}" tabindex="0" role="button" aria-label="{{ d.aria }}" onMouseEnter="{{ cardEnter }}" onMouseLeave="{{ cardLeave }}" onFocus="{{ cardEnter }}" onBlur="{{ cardLeave }}" style="position:absolute;left:50%;top:58%;width:148px;opacity:0;transform:translate(-50%,-50%) scale(0.85);will-change:transform,opacity;cursor:pointer;border-radius:16px;overflow:hidden;background:#FDFBF7;border:1px solid rgba(182,148,96,0.35);box-shadow:0 18px 42px rgba(110,88,52,0.20);outline:none;" style-focus="border-color:#A98B5F;box-shadow:0 0 0 3px rgba(169,139,95,0.35), 0 18px 42px rgba(110,88,52,0.20);">
+          <img src="{{ d.img }}" alt="" style="display:block;width:100%;height:152px;object-fit:cover;object-position:50% 12%;">
+          <div style="padding:9px 12px 10px 12px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.1;">{{ d.name }}</div>
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#A98B5F;margin-top:3px;">{{ d.label }}</div>
+          </div>
+          <div data-cta="1" style="position:absolute;left:0;top:0;right:0;height:152px;display:flex;align-items:center;justify-content:center;background:rgba(248,243,234,0.78);opacity:0;transition:opacity .35s ease;pointer-events:none;">
+            <span style="font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#8A6F42;border-bottom:1px solid #B69460;padding-bottom:4px;">Voir la collection</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="position:absolute;left:108px;bottom:26px;display:flex;align-items:center;gap:14px;z-index:60;">
+    <span aria-hidden="true" style="position:relative;display:block;width:1px;height:36px;background:rgba(169,139,95,0.4);overflow:hidden;"><span style="position:absolute;left:0;top:0;width:1px;height:10px;background:#A98B5F;animation:scrollDot 2.2s ease-in-out infinite;"></span></span>
+    <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8A7D6C;">Scroll pour découvrir</span>
+  </div>
+  <div style="position:absolute;right:52px;bottom:26px;display:flex;align-items:center;gap:14px;z-index:60;">
+    <a href="https://www.instagram.com/luxury___dress_bychichii/" target="_blank" rel="noopener" aria-label="Instagram" style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(169,139,95,0.55);background:rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;" style-hover="border-color:#A98B5F;background:#fff;">
+      <span aria-hidden="true" style="position:relative;display:block;width:15px;height:15px;border:1.4px solid #8A6F42;border-radius:5px;">
+        <span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:6px;height:6px;border:1.4px solid #8A6F42;border-radius:50%;"></span>
+        <span style="position:absolute;right:1.5px;top:1.5px;width:2px;height:2px;border-radius:50%;background:#8A6F42;"></span>
+      </span>
+    </a>
+    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(169,139,95,0.55);background:rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;" style-hover="border-color:#A98B5F;background:#fff;">
+      <span aria-hidden="true" style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:#8A6F42;line-height:1;">f</span>
+    </a>
+  </div>
+</div>
+
+
+
+<section data-screen-label="Comment ça marche" style="position:relative;background:#F8F4ED;padding:150px 108px 140px 108px;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;overflow:hidden;">
+  <div data-reveal="1" style="max-width:640px;margin-bottom:70px;">
+    
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(38px,3.6vw,58px);line-height:1.06;letter-spacing:1px;text-transform:uppercase;">Simple, rapide<br><em style="font-style:italic;color:#A98B5F;">et efficace</em></h2>
+  </div>
+  <div style="position:relative;">
+    <div aria-hidden="true" style="position:absolute;left:27px;right:27px;top:27px;height:1px;background:linear-gradient(90deg,rgba(182,148,96,0) 0%,rgba(182,148,96,0.5) 12%,rgba(182,148,96,0.5) 88%,rgba(182,148,96,0) 100%);"></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:36px 28px;position:relative;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+        <div data-reveal="1" style="display:flex;flex-direction:column;gap:16px;">
+          <span style="width:54px;height:54px;border-radius:50%;border:1px solid rgba(169,139,95,0.6);background:#FDFBF7;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;color:#8A6F42;">{{ s.n }}</span>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:21px;line-height:1.2;">{{ s.t }}</div>
+          <div style="font-size:13px;font-weight:300;line-height:1.65;color:#5C5348;max-width:220px;">{{ s.d }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+<section id="galerie" data-screen-label="Galerie" style="position:relative;background:#F8F4ED;padding:0 56px 150px 108px;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;overflow:hidden;">
+  <div data-reveal="1" style="display:flex;align-items:center;gap:14px;margin-bottom:44px;">
+    <span style="display:block;width:44px;height:1px;background:#B69460;"></span>
+    <span style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#A98B5F;">Galerie — En boutique</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:28px;justify-content:center;">
+    <sc-for list="{{ galerie }}" as="g" hint-placeholder-count="3">
+      <div data-reveal="1" style="flex:0 1 300px;min-width:240px;border-radius:150px 150px 18px 18px;overflow:hidden;border:1px solid rgba(182,148,96,0.35);box-shadow:0 24px 50px rgba(110,88,52,0.16);">
+        <video src="{{ g.src }}" muted="{{ true }}" autoPlay="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" aria-label="{{ g.alt }}" style="display:block;width:100%;height:420px;object-fit:cover;"></video>
+      </div>
+    </sc-for>
+  </div>
+</section>
+<section id="contact" data-screen-label="Réservation" style="position:relative;background:#F4EEE3;padding:140px 56px 140px 108px;display:flex;flex-wrap:wrap;gap:64px;align-items:center;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;overflow:hidden;">
+  <div data-reveal="1" style="flex:1 1 440px;min-width:300px;max-width:600px;">
+    
+    <h2 style="margin:0 0 26px 0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(40px,4vw,64px);line-height:1.06;letter-spacing:1px;text-transform:uppercase;text-wrap:balance;">Votre robe<br><em style="font-style:italic;color:#A98B5F;">vous attend</em></h2>
+    <p style="margin:0 0 40px 0;max-width:400px;font-size:15px;font-weight:300;line-height:1.75;color:#5C5348;text-wrap:pretty;">Réservez dès maintenant votre essayage et vivez une expérience inoubliable.</p>
+    <a href="https://wa.me/{{ waNumber }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;padding:18px 34px;background:#A98B5F;color:#FBF8F2;font-size:11px;letter-spacing:3px;text-transform:uppercase;border-radius:999px;box-shadow:0 14px 30px rgba(169,139,95,0.30);" style-hover="background:#96794E;color:#fff;">
+      <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:1px solid rgba(251,248,242,0.7);font-size:11px;">✆</span>
+      Réserver maintenant — WhatsApp
+    </a>
+  </div>
+  <div data-reveal="1" style="flex:0 1 460px;min-width:300px;position:relative;display:flex;justify-content:center;">
+    <div style="position:relative;width:380px;height:480px;border-radius:190px 190px 20px 20px;overflow:hidden;border:1px solid rgba(182,148,96,0.35);box-shadow:0 30px 60px rgba(110,88,52,0.20);">
+      <video src="uploads/asset/videos/02-spring-archive.mp4" muted="{{ true }}" autoPlay="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" aria-label="Intérieur de la boutique Luxury Dress by Chichii" style="display:block;width:100%;height:100%;object-fit:cover;"></video>
+    </div>
+  </div>
+</section>
+<footer data-screen-label="Pied de page" style="background:#F8F4ED;border-top:1px solid rgba(182,148,96,0.35);padding:64px 108px 40px 108px;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;">
+  <div style="display:flex;flex-wrap:wrap;gap:44px;justify-content:space-between;align-items:flex-start;margin-bottom:48px;">
+    <div style="max-width:300px;">
+      <img src="uploads/asset/logo/503971967_18048174587386881_2036036649405026795_n-Photoroom.png" alt="Logo By Chichii" style="height:64px;width:auto;display:block;mix-blend-mode:multiply;margin-bottom:14px;">
+      <p style="margin:0;font-size:13px;font-weight:300;line-height:1.7;color:#5C5348;">Location de robes haute couture pour mariages, soirées, fiançailles et événements d'exception.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#A98B5F;margin-bottom:4px;">Navigation</span>
+      <a href="#accueil" style="font-size:13px;">Accueil</a>
+      
+      
+      <a href="#galerie" style="font-size:13px;">Galerie</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#A98B5F;margin-bottom:4px;">Contact</span>
+      <a href="https://wa.me/{{ waNumber }}" target="_blank" rel="noopener" style="font-size:13px;">WhatsApp</a>
+      <a href="https://www.instagram.com/luxury___dress_bychichii/" target="_blank" rel="noopener" style="font-size:13px;">Instagram</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener" style="font-size:13px;">Facebook</a>
+      
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(182,148,96,0.2);padding-top:22px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:11px;letter-spacing:1px;color:#8A7D6C;">
+    <span>© 2026 Luxury Dress by Chichii</span>
+    <span>Haute couture · Mariage · Soirée · Fiançailles</span>
+  </div>
+</footer></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:880},&quot;rotationDuration&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:34,&quot;min&quot;:20,&quot;max&quot;:60,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Orbite&quot;},&quot;radiusX&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:370,&quot;min&quot;:260,&quot;max&quot;:450,&quot;step&quot;:5,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Orbite&quot;},&quot;showRibbons&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Décor&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;33612345678&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
+class Component extends DCLogic {
+  cards = [];
+  renderVals() {
+    const dresses = [
+      { name: "Noor", label: "Mariage", img: "uploads/asset/dresses/01-noor.jpg", aria: "Robe Noor, collection Mariage — voir la collection" },
+      { name: "Liora", label: "Soirée", img: "uploads/asset/dresses/02-liora.jpg", aria: "Robe Liora, collection Soirée — voir la collection" },
+      { name: "Séraphine", label: "Fiançailles", img: "uploads/asset/dresses/03-seraphine.jpg", aria: "Robe Séraphine, collection Fiançailles — voir la collection" },
+      { name: "Wren", label: "Cérémonie", img: "uploads/asset/dresses/04-wren.jpg", aria: "Robe Wren, collection Cérémonie — voir la collection" },
+      { name: "Odile", label: "Invitées", img: "uploads/asset/dresses/05-odile.jpg", aria: "Robe Odile, collection Invitées — voir la collection" },
+      { name: "Marlowe", label: "Haute Couture", img: "uploads/asset/dresses/06-marlowe.jpg", aria: "Robe Marlowe, collection Haute Couture — voir la collection" }
+    ];
+    const colCards = [
+      { label: "Mariage", name: "Noor", img: dresses[0].img, alt: "Robe de mariage Noor", w: 170, h: 300, ry: "9deg" },
+      { label: "Soirée", name: "Liora", img: dresses[1].img, alt: "Robe de soirée Liora", w: 185, h: 330, ry: "5deg" },
+      { label: "Fiançailles", name: "Séraphine", img: dresses[2].img, alt: "Robe de fiançailles Séraphine", w: 225, h: 385, ry: "0deg" },
+      { label: "Cérémonie", name: "Wren", img: dresses[3].img, alt: "Robe de cérémonie Wren", w: 185, h: 330, ry: "-5deg" },
+      { label: "Invitées", name: "Odile", img: dresses[4].img, alt: "Robe invitée Odile", w: 170, h: 300, ry: "-9deg" }
+    ];
+    const advantages = [
+      { t: "Robes Haute Couture", d: "Des pièces signature sélectionnées avec la plus grande exigence." },
+      { t: "Qualité Premium", d: "Tissus nobles, finitions impeccables, pressing soigné avant chaque location." },
+      { t: "Réservation Facile", d: "Réservez votre essayage en quelques messages, sans engagement." },
+      { t: "Accompagnement Personnalisé", d: "Conseils morphologie et stylisme à chaque essayage en boutique." }
+    ];
+    const steps = [
+      { n: "01", t: "Choisissez votre robe", d: "Parcourez nos collections et repérez votre coup de cœur." },
+      { n: "02", t: "Contactez-nous", d: "Écrivez-nous sur WhatsApp ou Instagram pour vérifier la disponibilité." },
+      { n: "03", t: "Essayage en boutique", d: "Essayez la robe avec les conseils personnalisés de Chichii." },
+      { n: "04", t: "Réservez votre date", d: "Bloquez votre date avec un acompte, la robe est à vous." },
+      { n: "05", t: "Profitez de votre événement", d: "Brillez le jour J, nous nous occupons du pressing au retour." }
+    ];
+    const galerie = [
+      { src: "uploads/asset/videos/01-noor-fitting.mp4", alt: "Essayage de la robe Noor en boutique" },
+      { src: "uploads/asset/videos/03-amara-odile.mp4", alt: "Robes Amara et Odile en boutique" },
+      { src: "uploads/asset/videos/06-spring-archive-ii.mp4", alt: "Collection printemps en boutique" }
+    ];
+    return {
+      dresses, colCards, advantages, steps, galerie,
+      waNumber: this.props.whatsappNumber ?? "33612345678",
+      showRibbons: this.props.showRibbons ?? true,
+      navRef: (el) => { this.navEl = el; },
+      colWrapRef: (el) => { this.colWrapEl = el; },
+      colCardRef: (el) => { if (el) (this.colCards || (this.colCards = []))[+el.dataset.colcard] = el; },
+      sceneRef: (el) => { this.sceneEl = el; },
+      dressRef: (el) => { this.dressEl = el; },
+      cardRef: (el) => { if (el) this.cards[+el.dataset.idx] = el; },
+      cardEnter: (e) => {
+        this.hovered = +e.currentTarget.dataset.idx;
+        const cta = e.currentTarget.querySelector('[data-cta]');
+        if (cta) cta.style.opacity = '1';
+      },
+      cardLeave: (e) => {
+        if (this.hovered === +e.currentTarget.dataset.idx) this.hovered = -1;
+        const cta = e.currentTarget.querySelector('[data-cta]');
+        if (cta) cta.style.opacity = '0';
+      }
+    };
+  }
+  componentDidMount() {
+    this.hovered = -1;
+    this.angle = -Math.PI / 2 + 0.4; // start with a card easing toward the front
+    this.speed = 0;
+    this.px = 0; this.py = 0; this.tx = 0; this.ty = 0;
+    this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.touch = matchMedia('(pointer: coarse)').matches;
+    // skip blur on low-powered mobile hardware
+    this.lowPerf = this.touch && ((navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4);
+    this.mq = matchMedia('(max-width: 900px)');
+    this.phases = [0, 1.7, 3.1, 4.6, 0.9, 2.4].map((p, i) => ({ p, f: 0.42 + (i % 3) * 0.14 }));
+    if (!this.touch && !this.reduced) {
+      this.onMove = (e) => {
+        const r = this.sceneEl ? this.sceneEl.getBoundingClientRect() : { left: 0, top: 0, width: innerWidth, height: innerHeight };
+        this.tx = Math.max(-1, Math.min(1, (e.clientX - r.left - r.width / 2) / (r.width / 2)));
+        this.ty = Math.max(-1, Math.min(1, (e.clientY - r.top - r.height / 2) / (r.height / 2)));
+      };
+      window.addEventListener('mousemove', this.onMove, { passive: true });
+    }
+    this.applyBreakpoint = () => {
+      const mob = this.mq.matches;
+      if (this.sceneEl) this.sceneEl.style.height = mob ? '470px' : '660px';
+      const podium = this.sceneEl && this.sceneEl.querySelector('img[src*="poduim"]');
+      if (podium) podium.style.width = mob ? '300px' : '450px';
+      if (this.dressEl) {
+        this.dressEl.style.width = mob ? '204px' : '300px';
+        this.dressEl.style.marginLeft = mob ? '-102px' : '-150px';
+        this.dressEl.style.bottom = mob ? '172px' : '258px';
+      }
+      this.cards.forEach((el) => { if (el) el.style.width = mob ? '106px' : '148px'; });
+    };
+    this.mq.addEventListener('change', this.applyBreakpoint);
+    this.applyBreakpoint();
+    // scroll reveals
+    const revealEls = Array.from(document.querySelectorAll('[data-reveal]'));
+    if (!this.reduced && 'IntersectionObserver' in window) {
+      revealEls.forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(26px)';
+        el.style.transition = 'opacity .9s ease ' + ((i % 5) * 0.08) + 's, transform .9s ease ' + ((i % 5) * 0.08) + 's';
+      });
+      this.io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            en.target.style.opacity = '1';
+            en.target.style.transform = 'translateY(0)';
+            this.io.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach((el) => this.io.observe(el));
+    }
+    // force seamless video looping (never end on a black frame)
+    this.videoTimer = setInterval(() => {
+      document.querySelectorAll('video').forEach((v) => {
+        v.muted = true; v.loop = true; v.playsInline = true;
+        if (!v.dataset.loopBound) {
+          v.dataset.loopBound = '1';
+          v.addEventListener('ended', () => { v.currentTime = 0; v.play().catch(() => {}); });
+        }
+        if (v.paused && v.readyState >= 2) v.play().catch(() => {});
+      });
+    }, 1500);
+    this.last = performance.now();
+    // Single rAF loop drives orbit + parallax via direct style writes (no React rerenders).
+    this.tick = (now) => {
+      const dt = Math.min(50, now - this.last); this.last = now;
+      const mob = this.mq.matches;
+      const sw = this.sceneEl ? this.sceneEl.clientWidth : innerWidth * 0.55;
+      const tablet = !mob && sw < 620;
+      const N = mob ? 3 : (tablet ? 4 : 6);
+      // clamp radius to the live scene width so cards never spill onto the copy/CTAs
+      const cardHalf = (mob ? 106 : 148) / 2 * 1.08;
+      const maxRx = Math.max(90, sw / 2 - cardHalf - 12);
+      const rxWant = mob ? 145 : (tablet ? 240 : (this.props.radiusX ?? 370));
+      const rx = Math.min(rxWant, maxRx);
+      const ry = (mob ? 80 : 165) * (rx / rxWant);
+      const dur = Math.max(5, this.props.rotationDuration ?? 34);
+      const target = (this.hovered >= 0 || this.reduced) ? 0 : (Math.PI * 2) / (dur * 1000);
+      this.speed += (target - this.speed) * Math.min(1, dt * 0.003); // eased pause, no jump
+      this.angle += this.speed * dt;
+      this.px += (this.tx - this.px) * 0.055; this.py += (this.ty - this.py) * 0.055;
+      const t = now * 0.001;
+      for (let i = 0; i < this.cards.length; i++) {
+        const el = this.cards[i]; if (!el) continue;
+        if (i >= N) { el.style.display = 'none'; continue; }
+        el.style.display = '';
+        const a = this.angle + (i * Math.PI * 2) / N;
+        const depth = Math.sin(a);           // -1 back … +1 front
+        const k = (depth + 1) / 2;
+        const fl = this.reduced ? 0 : Math.sin(t * this.phases[i].f + this.phases[i].p) * 7;
+        const x = Math.cos(a) * rx + this.px * 18;
+        const y = depth * ry + fl + this.py * 12;
+        const hov = this.hovered === i;
+        const s = (0.78 + 0.30 * k) * (hov ? 1.07 : 1);
+        el.style.transform = 'translate(-50%,-50%) translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) scale(' + s.toFixed(3) + ')';
+        el.style.opacity = hov ? '1' : (0.6 + 0.4 * k).toFixed(2);
+        el.style.zIndex = String(Math.round(60 + depth * 45)); // dress sits at 60
+        el.style.filter = (this.lowPerf || hov || k > 0.85) ? 'none' : 'blur(' + (1.5 * (1 - k)).toFixed(2) + 'px)';
+      }
+      if (this.dressEl) this.dressEl.style.transform = 'translate3d(' + (this.px * 9).toFixed(1) + 'px,' + (this.py * 6).toFixed(1) + 'px,0)';
+      // navbar solidifies on scroll
+      const sc = window.scrollY > 40;
+      if (this.navEl && sc !== this.navSolid) {
+        this.navSolid = sc;
+        this.navEl.style.background = sc ? 'rgba(248,244,237,0.82)' : 'transparent';
+        this.navEl.style.backdropFilter = sc ? 'blur(14px)' : 'none';
+        this.navEl.style.webkitBackdropFilter = sc ? 'blur(14px)' : 'none';
+        this.navEl.style.boxShadow = sc ? '0 8px 30px rgba(110,88,52,0.10)' : 'none';
+        this.navEl.style.padding = sc ? '14px 52px' : '24px 52px';
+      }
+      // collection cards drift gently with scroll
+      if (!this.reduced && this.colWrapEl && this.colCards) {
+        const r = this.colWrapEl.getBoundingClientRect();
+        const prog = Math.max(0, Math.min(1, (innerHeight - r.top) / (innerHeight + r.height)));
+        this.colCards.forEach((el, i) => {
+          if (el) el.style.transform = 'translateY(' + ((i % 2 === 0 ? 1 : -1) * (prog - 0.5) * 34).toFixed(1) + 'px)';
+        });
+      }
+      this.raf = requestAnimationFrame(this.tick);
+    };
+    this.raf = requestAnimationFrame(this.tick);
+  }
+  componentWillUnmount() {
+    clearInterval(this.videoTimer);
+    cancelAnimationFrame(this.raf);
+    if (this.onMove) window.removeEventListener('mousemove', this.onMove);
+    this.mq.removeEventListener('change', this.applyBreakpoint);
+  }
+}
+</script>
+</body>
+</html>
