@@ -26,18 +26,27 @@ a:hover{color:#A98B5F;}
   <nav ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 52px;box-sizing:border-box;transition:background .4s ease, padding .4s ease, box-shadow .4s ease;">
     <a href="#accueil" aria-label="Luxury Dress by Chichii — Accueil" style="display:flex;align-items:center;gap:14px;">
       <img src="uploads/asset/logo/503971967_18048174587386881_2036036649405026795_n-Photoroom.png" alt="Logo By Chichii" style="height:52px;width:auto;display:block;mix-blend-mode:multiply;">
-      <span style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#6E6357;">Luxury Dress by Chichii</span>
+      <span ref="{{ wordmarkRef }}" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#6E6357;white-space:nowrap;">Luxury Dress by Chichii</span>
     </a>
     <div style="display:flex;align-items:center;gap:36px;">
-      <a href="#accueil" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Accueil</a>
-      <a href="#galerie" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Galerie</a>
-      <a href="#contact" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Contact</a>
-      <button aria-label="Ouvrir le menu" style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(169,139,95,0.55);background:rgba(255,255,255,0.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;" style-hover="border-color:#A98B5F;background:#fff;">
+      <div ref="{{ navLinksRef }}" style="display:flex;align-items:center;gap:36px;">
+        <a href="#accueil" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Accueil</a>
+        <a href="#galerie" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Galerie</a>
+        <a href="#contact" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Contact</a>
+      </div>
+      <button aria-label="Ouvrir le menu" onClick="{{ toggleMenu }}" style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(169,139,95,0.55);background:rgba(255,255,255,0.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;" style-hover="border-color:#A98B5F;background:#fff;">
         <span style="display:block;width:16px;height:1px;background:#2B2723;"></span>
         <span style="display:block;width:10px;height:1px;background:#A98B5F;"></span>
       </button>
     </div>
   </nav>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;top:0;left:0;right:0;z-index:190;background:rgba(248,244,237,0.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:104px 28px 38px 28px;display:flex;flex-direction:column;gap:26px;box-shadow:0 18px 40px rgba(110,88,52,0.14);border-bottom:1px solid rgba(182,148,96,0.3);">
+      <a href="#accueil" onClick="{{ closeMenu }}" style="font-size:13px;letter-spacing:3px;text-transform:uppercase;">Accueil</a>
+      <a href="#galerie" onClick="{{ closeMenu }}" style="font-size:13px;letter-spacing:3px;text-transform:uppercase;">Galerie</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="font-size:13px;letter-spacing:3px;text-transform:uppercase;">Contact</a>
+    </div>
+  </sc-if>
   
   <div style="display:flex;flex-wrap:wrap;align-items:center;min-height:100vh;padding:130px 0 40px 0;box-sizing:border-box;">
     <div style="flex:1 1 420px;min-width:320px;max-width:660px;padding:0 20px 40px 108px;box-sizing:border-box;position:relative;z-index:40;">
@@ -178,6 +187,7 @@ a:hover{color:#A98B5F;}
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:880},&quot;rotationDuration&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:34,&quot;min&quot;:20,&quot;max&quot;:60,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Orbite&quot;},&quot;radiusX&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:370,&quot;min&quot;:260,&quot;max&quot;:450,&quot;step&quot;:5,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Orbite&quot;},&quot;showRibbons&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Décor&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;33612345678&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
 class Component extends DCLogic {
   cards = [];
+  state = { menuOpen: false };
   renderVals() {
     const dresses = [
       { name: "Noor", label: "Mariage", img: "uploads/asset/dresses/01-noor.jpg", aria: "Robe Noor, collection Mariage — voir la collection" },
@@ -217,6 +227,11 @@ class Component extends DCLogic {
       waNumber: this.props.whatsappNumber ?? "33612345678",
       showRibbons: this.props.showRibbons ?? true,
       navRef: (el) => { this.navEl = el; },
+      wordmarkRef: (el) => { this.wordmarkEl = el; if (el && this.applyBreakpoint) this.applyBreakpoint(); },
+      navLinksRef: (el) => { this.navLinksEl = el; if (el && this.applyBreakpoint) this.applyBreakpoint(); },
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
       colWrapRef: (el) => { this.colWrapEl = el; },
       colCardRef: (el) => { if (el) (this.colCards || (this.colCards = []))[+el.dataset.colcard] = el; },
       sceneRef: (el) => { this.sceneEl = el; },
@@ -255,6 +270,14 @@ class Component extends DCLogic {
     }
     this.applyBreakpoint = () => {
       const mob = this.mq.matches;
+      if (this.wordmarkEl) this.wordmarkEl.style.display = mob ? 'none' : '';
+      if (this.navLinksEl) this.navLinksEl.style.display = mob ? 'none' : 'flex';
+      if (this.navEl) {
+        const logo = this.navEl.querySelector('img');
+        if (logo) logo.style.height = mob ? '42px' : '52px';
+      }
+      this.navSolid = undefined; // force nav padding reapply for new breakpoint
+      if (!mob && this.state.menuOpen) this.setState({ menuOpen: false });
       if (this.sceneEl) this.sceneEl.style.height = mob ? '470px' : '660px';
       const podium = this.sceneEl && this.sceneEl.querySelector('img[src*="poduim"]');
       if (podium) podium.style.width = mob ? '300px' : '450px';
@@ -343,7 +366,7 @@ class Component extends DCLogic {
         this.navEl.style.backdropFilter = sc ? 'blur(14px)' : 'none';
         this.navEl.style.webkitBackdropFilter = sc ? 'blur(14px)' : 'none';
         this.navEl.style.boxShadow = sc ? '0 8px 30px rgba(110,88,52,0.10)' : 'none';
-        this.navEl.style.padding = sc ? '14px 52px' : '24px 52px';
+        this.navEl.style.padding = mob ? (sc ? '10px 20px' : '16px 20px') : (sc ? '14px 52px' : '24px 52px');
       }
       // collection cards drift gently with scroll
       if (!this.reduced && this.colWrapEl && this.colCards) {
