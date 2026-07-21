@@ -49,7 +49,7 @@ a:hover{color:#A98B5F;}
   </sc-if>
   
   <div style="display:flex;flex-wrap:wrap;align-items:center;min-height:100vh;padding:130px 0 40px 0;box-sizing:border-box;">
-    <div style="flex:1 1 420px;min-width:320px;max-width:660px;padding:0 20px 40px 108px;box-sizing:border-box;position:relative;z-index:40;">
+    <div ref="{{ heroCopyRef }}" style="flex:1 1 420px;min-width:320px;max-width:660px;padding:0 20px 40px 108px;box-sizing:border-box;position:relative;z-index:40;">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px;">
         <span style="display:block;width:44px;height:1px;background:#B69460;"></span>
         <span style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#A98B5F;">Location de robes haute couture</span>
@@ -92,11 +92,11 @@ a:hover{color:#A98B5F;}
       </sc-for>
     </div>
   </div>
-  <div style="position:absolute;left:108px;bottom:26px;display:flex;align-items:center;gap:14px;z-index:60;">
+  <div ref="{{ scrollHintRef }}" style="position:absolute;left:108px;bottom:26px;display:flex;align-items:center;gap:14px;z-index:60;">
     <span aria-hidden="true" style="position:relative;display:block;width:1px;height:36px;background:rgba(169,139,95,0.4);overflow:hidden;"><span style="position:absolute;left:0;top:0;width:1px;height:10px;background:#A98B5F;animation:scrollDot 2.2s ease-in-out infinite;"></span></span>
     <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8A7D6C;">Scroll pour découvrir</span>
   </div>
-  <div style="position:absolute;right:52px;bottom:26px;display:flex;align-items:center;gap:14px;z-index:60;">
+  <div ref="{{ socialsRef }}" style="position:absolute;right:52px;bottom:26px;display:flex;align-items:center;gap:14px;z-index:60;">
     <a href="https://www.instagram.com/luxury___dress_bychichii/" target="_blank" rel="noopener" aria-label="Instagram" style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(169,139,95,0.55);background:rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;" style-hover="border-color:#A98B5F;background:#fff;">
       <span aria-hidden="true" style="position:relative;display:block;width:15px;height:15px;border:1.4px solid #8A6F42;border-radius:5px;">
         <span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:6px;height:6px;border:1.4px solid #8A6F42;border-radius:50%;"></span>
@@ -147,7 +147,7 @@ a:hover{color:#A98B5F;}
     
     <h2 style="margin:0 0 26px 0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(40px,4vw,64px);line-height:1.06;letter-spacing:1px;text-transform:uppercase;text-wrap:balance;">Votre robe<br><em style="font-style:italic;color:#A98B5F;">vous attend</em></h2>
     <p style="margin:0 0 40px 0;max-width:400px;font-size:15px;font-weight:300;line-height:1.75;color:#5C5348;text-wrap:pretty;">Réservez dès maintenant votre essayage et vivez une expérience inoubliable.</p>
-    <a href="https://wa.me/{{ waNumber }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;padding:18px 34px;background:#A98B5F;color:#FBF8F2;font-size:11px;letter-spacing:3px;text-transform:uppercase;border-radius:999px;box-shadow:0 14px 30px rgba(169,139,95,0.30);" style-hover="background:#96794E;color:#fff;">
+    <a ref="{{ waBtnRef }}" href="https://wa.me/{{ waNumber }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;padding:18px 34px;background:#A98B5F;color:#FBF8F2;font-size:11px;letter-spacing:3px;text-transform:uppercase;border-radius:999px;box-shadow:0 14px 30px rgba(169,139,95,0.30);" style-hover="background:#96794E;color:#fff;">
       <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:1px solid rgba(251,248,242,0.7);font-size:11px;">✆</span>
       Réserver maintenant — WhatsApp
     </a>
@@ -229,6 +229,10 @@ class Component extends DCLogic {
       navRef: (el) => { this.navEl = el; },
       wordmarkRef: (el) => { this.wordmarkEl = el; if (el && this.applyBreakpoint) this.applyBreakpoint(); },
       navLinksRef: (el) => { this.navLinksEl = el; if (el && this.applyBreakpoint) this.applyBreakpoint(); },
+      heroCopyRef: (el) => { this.heroCopyEl = el; },
+      scrollHintRef: (el) => { this.scrollHintEl = el; },
+      socialsRef: (el) => { this.socialsEl = el; },
+      waBtnRef: (el) => { this.waBtnEl = el; },
       menuOpen: this.state.menuOpen,
       toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
       closeMenu: () => this.setState({ menuOpen: false }),
@@ -277,6 +281,26 @@ class Component extends DCLogic {
         if (logo) logo.style.height = mob ? '42px' : '52px';
       }
       this.navSolid = undefined; // force nav padding reapply for new breakpoint
+      if (this.heroCopyEl) this.heroCopyEl.style.padding = mob ? '0 24px 40px 24px' : '0 20px 40px 108px';
+      if (this.scrollHintEl) this.scrollHintEl.style.display = mob ? 'none' : 'flex';
+      if (this.socialsEl) { this.socialsEl.style.right = mob ? '20px' : '52px'; this.socialsEl.style.bottom = mob ? '20px' : '26px'; }
+      if (this.waBtnEl) {
+        this.waBtnEl.style.padding = mob ? '15px 24px' : '18px 34px';
+        this.waBtnEl.style.fontSize = mob ? '10px' : '11px';
+        this.waBtnEl.style.letterSpacing = mob ? '2px' : '3px';
+        this.waBtnEl.style.maxWidth = mob ? '100%' : '';
+        this.waBtnEl.style.boxSizing = 'border-box';
+      }
+      const secPads = {
+        'Comment ça marche': mob ? '90px 24px 80px 24px' : '150px 108px 140px 108px',
+        'Galerie': mob ? '0 24px 90px 24px' : '0 56px 150px 108px',
+        'Réservation': mob ? '90px 24px 90px 24px' : '140px 56px 140px 108px',
+        'Pied de page': mob ? '56px 24px 32px 24px' : '64px 108px 40px 108px'
+      };
+      Object.keys(secPads).forEach((label) => {
+        const el = document.querySelector('[data-screen-label="' + label + '"]');
+        if (el) el.style.padding = secPads[label];
+      });
       if (!mob && this.state.menuOpen) this.setState({ menuOpen: false });
       if (this.sceneEl) this.sceneEl.style.height = mob ? '470px' : '660px';
       const podium = this.sceneEl && this.sceneEl.querySelector('img[src*="poduim"]');
