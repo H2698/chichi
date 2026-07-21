@@ -281,7 +281,11 @@ class Component extends DCLogic {
         if (logo) logo.style.height = mob ? '42px' : '52px';
       }
       this.navSolid = undefined; // force nav padding reapply for new breakpoint
-      if (this.heroCopyEl) this.heroCopyEl.style.padding = mob ? '0 24px 40px 24px' : '0 20px 40px 108px';
+      if (this.heroCopyEl) {
+        this.heroCopyEl.style.padding = mob ? '28px 24px 60px 24px' : '0 20px 40px 108px';
+        this.heroCopyEl.style.order = mob ? '2' : '0'; // mobile: scene (podium) first, text after
+      }
+      if (this.sceneEl) this.sceneEl.style.order = mob ? '1' : '0';
       if (this.scrollHintEl) this.scrollHintEl.style.display = mob ? 'none' : 'flex';
       if (this.socialsEl) { this.socialsEl.style.right = mob ? '20px' : '52px'; this.socialsEl.style.bottom = mob ? '20px' : '26px'; }
       if (this.waBtnEl) {
