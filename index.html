@@ -19,18 +19,27 @@ a:hover{color:#A98B5F;}
 @keyframes ribbonSway{0%,100%{transform:translateX(-50%) rotate(-4deg)}50%{transform:translateX(-50%) rotate(4deg)}}
 @keyframes petalRise{0%{transform:translateY(0) rotate(0deg);opacity:0}15%{opacity:.7}85%{opacity:.5}100%{transform:translateY(-90px) rotate(140deg);opacity:0}}
 @keyframes scrollDot{0%{transform:translateY(0);opacity:1}70%{transform:translateY(18px);opacity:0}100%{transform:translateY(0);opacity:0}}
+@keyframes ringSpin{from{transform:translateX(-50%) rotate(0deg)}to{transform:translateX(-50%) rotate(360deg)}}
 @media (prefers-reduced-motion: reduce){*{animation:none !important}}
 </style>
 </helmet>
-<div id="accueil" data-screen-label="Accueil" style="position:relative;min-height:100vh;overflow:hidden;background:radial-gradient(1100px 600px at 72% 62%, #F2E9DB 0%, rgba(242,233,219,0) 60%), #F8F4ED;font-family:'Jost',sans-serif;color:#2B2723;">
+<div id="accueil" data-screen-label="Accueil" style="position:relative;min-height:100vh;overflow:hidden;background:radial-gradient(1100px 600px at 72% 62%, #F2E9DB 0%, rgba(242,233,219,0) 60%),radial-gradient(760px 520px at 4% 4%, rgba(213,183,135,0.22), rgba(213,183,135,0) 62%),radial-gradient(620px 420px at 98% 8%, rgba(213,183,135,0.16), rgba(213,183,135,0) 60%), #F8F4ED;font-family:'Jost',sans-serif;color:#2B2723;">
+  <div aria-hidden="true" style="position:absolute;inset:0;background-image:repeating-linear-gradient(90deg, rgba(169,139,95,0.05) 0 1px, rgba(169,139,95,0) 1px 9px);-webkit-mask-image:radial-gradient(1000px 700px at 55% 55%, rgba(0,0,0,0) 35%, #000 90%);mask-image:radial-gradient(1000px 700px at 55% 55%, rgba(0,0,0,0) 35%, #000 90%);pointer-events:none;z-index:2;"></div>
+  <div aria-hidden="true" style="position:absolute;inset:16px;border:1px solid rgba(182,148,96,0.30);pointer-events:none;z-index:5;"></div>
+  <div aria-hidden="true" style="position:absolute;inset:23px;border:1px solid rgba(182,148,96,0.14);pointer-events:none;z-index:5;"></div>
+  <span aria-hidden="true" style="position:absolute;left:12px;top:12px;width:9px;height:9px;border:1px solid rgba(169,139,95,0.75);background:#F8F4ED;transform:rotate(45deg);z-index:6;"></span>
+  <span aria-hidden="true" style="position:absolute;right:12px;top:12px;width:9px;height:9px;border:1px solid rgba(169,139,95,0.75);background:#F8F4ED;transform:rotate(45deg);z-index:6;"></span>
+  <span aria-hidden="true" style="position:absolute;left:12px;bottom:12px;width:9px;height:9px;border:1px solid rgba(169,139,95,0.75);background:#F8F4ED;transform:rotate(45deg);z-index:6;"></span>
+  <span aria-hidden="true" style="position:absolute;right:12px;bottom:12px;width:9px;height:9px;border:1px solid rgba(169,139,95,0.75);background:#F8F4ED;transform:rotate(45deg);z-index:6;"></span>
   <nav ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 52px;box-sizing:border-box;transition:background .4s ease, padding .4s ease, box-shadow .4s ease;">
     <a href="#accueil" aria-label="Luxury Dress by Chichii — Accueil" style="display:flex;align-items:center;gap:14px;">
-      <img src="uploads/asset/logo/503971967_18048174587386881_2036036649405026795_n-Photoroom.png" alt="Logo By Chichii" style="height:52px;width:auto;display:block;mix-blend-mode:multiply;">
+      <img src="uploads/asset/logo/503971967_18048174587386881_2036036649405026795_n-Photoroom.png" alt="Logo By Chichii" style="height:87px;width:auto;display:block;mix-blend-mode:multiply;">
       <span ref="{{ wordmarkRef }}" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#6E6357;white-space:nowrap;">Luxury Dress by Chichii</span>
     </a>
     <div style="display:flex;align-items:center;gap:36px;">
       <div ref="{{ navLinksRef }}" style="display:flex;align-items:center;gap:36px;">
         <a href="#accueil" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Accueil</a>
+        <a href="#collection" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Collection</a>
         <a href="#galerie" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Galerie</a>
         <a href="#contact" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Contact</a>
       </div>
@@ -43,6 +52,7 @@ a:hover{color:#A98B5F;}
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
     <div style="position:fixed;top:0;left:0;right:0;z-index:190;background:rgba(248,244,237,0.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:104px 28px 38px 28px;display:flex;flex-direction:column;gap:26px;box-shadow:0 18px 40px rgba(110,88,52,0.14);border-bottom:1px solid rgba(182,148,96,0.3);">
       <a href="#accueil" onClick="{{ closeMenu }}" style="font-size:13px;letter-spacing:3px;text-transform:uppercase;">Accueil</a>
+      <a href="#collection" onClick="{{ closeMenu }}" style="font-size:13px;letter-spacing:3px;text-transform:uppercase;">Collection</a>
       <a href="#galerie" onClick="{{ closeMenu }}" style="font-size:13px;letter-spacing:3px;text-transform:uppercase;">Galerie</a>
       <a href="#contact" onClick="{{ closeMenu }}" style="font-size:13px;letter-spacing:3px;text-transform:uppercase;">Contact</a>
     </div>
@@ -59,11 +69,21 @@ a:hover{color:#A98B5F;}
       </h1>
       <p style="margin:0 0 40px 0;max-width:420px;font-size:16px;font-weight:300;line-height:1.75;color:#5C5348;text-wrap:pretty;">Découvrez une sélection raffinée de robes pour mariages, soirées, fiançailles et événements d'exception.</p>
       <div style="display:flex;flex-wrap:wrap;gap:16px;">
-        <a href="#collections" style="display:inline-flex;align-items:center;gap:10px;padding:17px 32px;background:#A98B5F;color:#FBF8F2;font-size:11px;letter-spacing:3px;text-transform:uppercase;border-radius:999px;box-shadow:0 14px 30px rgba(169,139,95,0.30);" style-hover="background:#96794E;color:#fff;">Découvrir la collection</a>
+        <a href="#collection" style="display:inline-flex;align-items:center;gap:10px;padding:17px 32px;background:#A98B5F;color:#FBF8F2;font-size:11px;letter-spacing:3px;text-transform:uppercase;border-radius:999px;box-shadow:0 14px 30px rgba(169,139,95,0.30);" style-hover="background:#96794E;color:#fff;">Découvrir la collection</a>
         <a href="https://wa.me/{{ waNumber }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:17px 32px;border:1px solid rgba(169,139,95,0.6);color:#2B2723;font-size:11px;letter-spacing:3px;text-transform:uppercase;border-radius:999px;background:rgba(255,255,255,0.35);" style-hover="border-color:#A98B5F;background:#fff;">Réserver maintenant</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:46px;">
+        <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8A7D6C;">Mariage</span>
+        <span aria-hidden="true" style="width:4px;height:4px;background:#B69460;transform:rotate(45deg);"></span>
+        <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8A7D6C;">Soirée</span>
+        <span aria-hidden="true" style="width:4px;height:4px;background:#B69460;transform:rotate(45deg);"></span>
+        <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8A7D6C;">Fiançailles</span>
+        <span aria-hidden="true" style="width:4px;height:4px;background:#B69460;transform:rotate(45deg);"></span>
+        <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8A7D6C;">Cérémonie</span>
       </div>
     </div>
     <div ref="{{ sceneRef }}" style="flex:1.25 1 480px;min-width:320px;position:relative;height:660px;">
+      <div aria-hidden="true" style="position:absolute;left:50%;bottom:56px;width:min(540px,88vw);aspect-ratio:1;border:1px dashed rgba(182,148,96,0.35);border-radius:50%;z-index:2;transform:translateX(-50%);animation:ringSpin 70s linear infinite;pointer-events:none;"></div>
       <div aria-hidden="true" style="position:absolute;left:50%;bottom:40px;transform:translateX(-50%);width:600px;height:320px;background:radial-gradient(closest-side, rgba(213,183,135,0.38), rgba(213,183,135,0) 72%);z-index:1;"></div>
       <sc-if value="{{ showRibbons }}" hint-placeholder-val="{{ true }}">
         <div aria-hidden="true" style="position:absolute;left:50%;bottom:110px;width:580px;height:210px;border:1px solid rgba(182,148,96,0.45);border-radius:50%;z-index:8;animation:ribbonSway 16s ease-in-out infinite;transform:translateX(-50%);"></div>
@@ -73,19 +93,15 @@ a:hover{color:#A98B5F;}
       <span aria-hidden="true" style="position:absolute;left:70%;bottom:220px;width:5px;height:5px;border-radius:2px;background:#B69460;z-index:12;animation:petalRise 14s 2s ease-in-out infinite;"></span>
       <span aria-hidden="true" style="position:absolute;left:58%;bottom:420px;width:4px;height:4px;border-radius:50%;background:#D3B57E;z-index:12;animation:petalRise 9s 4s ease-in-out infinite;"></span>
       <span aria-hidden="true" style="position:absolute;left:38%;bottom:180px;width:5px;height:5px;border-radius:50%;background:#C9A96B;z-index:12;animation:petalRise 13s 6s ease-in-out infinite;"></span>
-      <img src="uploads/asset/founder/poduim.png" alt="" aria-hidden="true" style="position:absolute;left:50%;bottom:14px;transform:translateX(-50%);width:450px;z-index:40;pointer-events:none;">
-      <div aria-hidden="true" style="position:absolute;left:50%;bottom:252px;transform:translateX(-50%);width:210px;height:36px;background:radial-gradient(closest-side, rgba(60,50,35,0.22), rgba(60,50,35,0) 75%);z-index:55;"></div>
-      <div ref="{{ dressRef }}" style="position:absolute;left:50%;bottom:258px;margin-left:-150px;width:300px;z-index:60;will-change:transform;">
+      <img src="uploads/asset/founder/podium-white.png" alt="" aria-hidden="true" style="position:absolute;left:50%;bottom:-88px;transform:translateX(-50%);width:920px;z-index:40;pointer-events:none;filter:drop-shadow(0 26px 30px rgba(80,62,38,0.22));">
+      <div aria-hidden="true" style="position:absolute;left:50%;bottom:170px;transform:translateX(-50%);width:250px;height:40px;background:radial-gradient(closest-side, rgba(60,50,35,0.22), rgba(60,50,35,0) 75%);z-index:55;"></div>
+      <div ref="{{ dressRef }}" style="position:absolute;left:50%;bottom:180px;margin-left:-150px;width:300px;z-index:60;will-change:transform;">
         <img src="uploads/03-seraphine-Photoroom.png" alt="Robe haute couture Séraphine portée par la fondatrice" style="display:block;width:100%;height:auto;filter:drop-shadow(0 24px 30px rgba(80,62,38,0.28));animation:dressFloat 7s ease-in-out infinite;-webkit-mask-image:linear-gradient(to bottom,#000 78%,rgba(0,0,0,0) 99%);mask-image:linear-gradient(to bottom,#000 78%,rgba(0,0,0,0) 99%);">
       </div>
       <sc-for list="{{ dresses }}" as="d" hint-placeholder-count="6">
         <div ref="{{ cardRef }}" data-idx="{{ $index }}" tabindex="0" role="button" aria-label="{{ d.aria }}" onMouseEnter="{{ cardEnter }}" onMouseLeave="{{ cardLeave }}" onFocus="{{ cardEnter }}" onBlur="{{ cardLeave }}" style="position:absolute;left:50%;top:58%;width:148px;opacity:0;transform:translate(-50%,-50%) scale(0.85);will-change:transform,opacity;cursor:pointer;border-radius:16px;overflow:hidden;background:#FDFBF7;border:1px solid rgba(182,148,96,0.35);box-shadow:0 18px 42px rgba(110,88,52,0.20);outline:none;" style-focus="border-color:#A98B5F;box-shadow:0 0 0 3px rgba(169,139,95,0.35), 0 18px 42px rgba(110,88,52,0.20);">
-          <img src="{{ d.img }}" alt="" style="display:block;width:100%;height:152px;object-fit:cover;object-position:50% 12%;">
-          <div style="padding:9px 12px 10px 12px;">
-            <div style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.1;">{{ d.name }}</div>
-            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#A98B5F;margin-top:3px;">{{ d.label }}</div>
-          </div>
-          <div data-cta="1" style="position:absolute;left:0;top:0;right:0;height:152px;display:flex;align-items:center;justify-content:center;background:rgba(248,243,234,0.78);opacity:0;transition:opacity .35s ease;pointer-events:none;">
+          <img src="{{ d.img }}" alt="" style="display:block;width:100%;height:196px;object-fit:cover;object-position:50% 12%;">
+          <div data-cta="1" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(248,243,234,0.78);opacity:0;transition:opacity .35s ease;pointer-events:none;">
             <span style="font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#8A6F42;border-bottom:1px solid #B69460;padding-bottom:4px;">Voir la collection</span>
           </div>
         </div>
@@ -111,9 +127,36 @@ a:hover{color:#A98B5F;}
 
 
 
-<section data-screen-label="Comment ça marche" style="position:relative;background:#F8F4ED;padding:150px 108px 140px 108px;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;overflow:hidden;">
+<section id="collection" data-screen-label="Collection" style="position:relative;background:radial-gradient(760px 460px at 8% 10%, rgba(213,183,135,0.20), rgba(213,183,135,0) 60%), #F8F4ED;padding:140px 56px 130px 56px;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;overflow:hidden;">
+  <div data-reveal="1" style="max-width:640px;margin:0 auto 54px auto;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:22px;">
+      <span style="display:block;width:44px;height:1px;background:#B69460;"></span>
+      <span style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#A98B5F;">La Collection</span>
+      <span style="display:block;width:44px;height:1px;background:#B69460;"></span>
+    </div>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(38px,3.6vw,58px);line-height:1.06;letter-spacing:1px;text-transform:uppercase;">Nos robes<br><em style="font-style:italic;color:#A98B5F;">signature</em></h2>
+  </div>
+  <div data-reveal="1" style="position:relative;">
+    <x-import component="Slideshow3D" from="./Slideshow3D.jsx" dc-props="{{ slideshowProps }}" style="display:block;width:100%;height:600px;" hint-size="100%,600px"></x-import>
+  </div>
+  <p style="margin:26px auto 0 auto;max-width:420px;text-align:center;font-size:12px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:#8A7D6C;">Cliquez sur une robe pour la découvrir</p>
+</section>
+<section data-screen-label="Comment ça marche" style="position:relative;background:radial-gradient(700px 420px at 92% 8%, rgba(213,183,135,0.18), rgba(213,183,135,0) 60%), #F8F4ED;padding:150px 108px 140px 108px;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;right:0;top:0;bottom:0;width:44%;background-image:radial-gradient(circle, rgba(169,139,95,0.14) 1px, rgba(169,139,95,0) 1.6px);background-size:26px 26px;-webkit-mask-image:linear-gradient(to left,#000 25%,rgba(0,0,0,0) 95%);mask-image:linear-gradient(to left,#000 25%,rgba(0,0,0,0) 95%);pointer-events:none;"></div>
+  <div aria-hidden="true" style="position:absolute;right:-20px;top:34px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(90px,11vw,160px);line-height:1;color:rgba(169,139,95,0.08);pointer-events:none;user-select:none;white-space:nowrap;">By Chichii</div>
+  <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 64px auto;">
+    <span style="width:110px;height:1px;background:linear-gradient(90deg,rgba(182,148,96,0),rgba(182,148,96,0.6));"></span>
+    <span style="width:7px;height:7px;border:1px solid #B69460;transform:rotate(45deg);"></span>
+    <span style="width:5px;height:5px;background:#B69460;transform:rotate(45deg);"></span>
+    <span style="width:7px;height:7px;border:1px solid #B69460;transform:rotate(45deg);"></span>
+    <span style="width:110px;height:1px;background:linear-gradient(90deg,rgba(182,148,96,0.6),rgba(182,148,96,0));"></span>
+  </div>
   <div data-reveal="1" style="max-width:640px;margin-bottom:70px;">
     
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
+      <span style="display:block;width:44px;height:1px;background:#B69460;"></span>
+      <span style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#A98B5F;">Comment ça marche</span>
+    </div>
     <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(38px,3.6vw,58px);line-height:1.06;letter-spacing:1px;text-transform:uppercase;">Simple, rapide<br><em style="font-style:italic;color:#A98B5F;">et efficace</em></h2>
   </div>
   <div style="position:relative;">
@@ -121,7 +164,7 @@ a:hover{color:#A98B5F;}
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:36px 28px;position:relative;">
       <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
         <div data-reveal="1" style="display:flex;flex-direction:column;gap:16px;">
-          <span style="width:54px;height:54px;border-radius:50%;border:1px solid rgba(169,139,95,0.6);background:#FDFBF7;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;color:#8A6F42;">{{ s.n }}</span>
+          <span style="width:54px;height:54px;border-radius:50%;border:1px solid rgba(169,139,95,0.6);background:#FDFBF7;box-shadow:0 0 0 6px #F8F4ED,0 0 0 7px rgba(182,148,96,0.28);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;color:#8A6F42;">{{ s.n }}</span>
           <div style="font-family:'Cormorant Garamond',serif;font-size:21px;line-height:1.2;">{{ s.t }}</div>
           <div style="font-size:13px;font-weight:300;line-height:1.65;color:#5C5348;max-width:220px;">{{ s.d }}</div>
         </div>
@@ -130,21 +173,29 @@ a:hover{color:#A98B5F;}
   </div>
 </section>
 <section id="galerie" data-screen-label="Galerie" style="position:relative;background:#F8F4ED;padding:0 56px 150px 108px;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;left:-130px;bottom:-60px;width:360px;height:360px;border:1px solid rgba(182,148,96,0.25);border-radius:50%;pointer-events:none;"></div>
+  <div aria-hidden="true" style="position:absolute;left:-90px;bottom:-20px;width:270px;height:270px;border:1px dashed rgba(182,148,96,0.22);border-radius:50%;pointer-events:none;"></div>
+  <div aria-hidden="true" style="position:absolute;right:60px;top:-40px;width:220px;height:220px;background:radial-gradient(closest-side, rgba(213,183,135,0.30), rgba(213,183,135,0) 72%);pointer-events:none;"></div>
   <div data-reveal="1" style="display:flex;align-items:center;gap:14px;margin-bottom:44px;">
     <span style="display:block;width:44px;height:1px;background:#B69460;"></span>
     <span style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#A98B5F;">Galerie — En boutique</span>
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:28px;justify-content:center;">
     <sc-for list="{{ galerie }}" as="g" hint-placeholder-count="3">
-      <div data-reveal="1" style="flex:0 1 300px;min-width:240px;border-radius:150px 150px 18px 18px;overflow:hidden;border:1px solid rgba(182,148,96,0.35);box-shadow:0 24px 50px rgba(110,88,52,0.16);">
+      <div data-reveal="1" style="position:relative;flex:0 1 300px;min-width:240px;border-radius:150px 150px 18px 18px;overflow:hidden;border:1px solid rgba(182,148,96,0.35);box-shadow:0 24px 50px rgba(110,88,52,0.16);">
+        <div aria-hidden="true" style="position:absolute;inset:10px;border:1px solid rgba(253,251,247,0.6);border-radius:140px 140px 10px 10px;z-index:2;pointer-events:none;"></div>
         <video src="{{ g.src }}" muted="{{ true }}" autoPlay="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" aria-label="{{ g.alt }}" style="display:block;width:100%;height:420px;object-fit:cover;"></video>
       </div>
     </sc-for>
   </div>
 </section>
-<section id="contact" data-screen-label="Réservation" style="position:relative;background:#F4EEE3;padding:140px 56px 140px 108px;display:flex;flex-wrap:wrap;gap:64px;align-items:center;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;overflow:hidden;">
+<section id="contact" data-screen-label="Réservation" style="position:relative;background:radial-gradient(820px 520px at 88% 12%, rgba(213,183,135,0.26), rgba(213,183,135,0) 62%),radial-gradient(620px 420px at 6% 92%, rgba(213,183,135,0.18), rgba(213,183,135,0) 60%),repeating-linear-gradient(45deg, rgba(169,139,95,0.03) 0 1px, rgba(169,139,95,0) 1px 12px), #F4EEE3;padding:140px 56px 140px 108px;display:flex;flex-wrap:wrap;gap:64px;align-items:center;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;overflow:hidden;">
   <div data-reveal="1" style="flex:1 1 440px;min-width:300px;max-width:600px;">
     
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
+      <span style="display:block;width:44px;height:1px;background:#B69460;"></span>
+      <span style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#A98B5F;">Réservation</span>
+    </div>
     <h2 style="margin:0 0 26px 0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(40px,4vw,64px);line-height:1.06;letter-spacing:1px;text-transform:uppercase;text-wrap:balance;">Votre robe<br><em style="font-style:italic;color:#A98B5F;">vous attend</em></h2>
     <p style="margin:0 0 40px 0;max-width:400px;font-size:15px;font-weight:300;line-height:1.75;color:#5C5348;text-wrap:pretty;">Réservez dès maintenant votre essayage et vivez une expérience inoubliable.</p>
     <a ref="{{ waBtnRef }}" href="https://wa.me/{{ waNumber }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;padding:18px 34px;background:#A98B5F;color:#FBF8F2;font-size:11px;letter-spacing:3px;text-transform:uppercase;border-radius:999px;box-shadow:0 14px 30px rgba(169,139,95,0.30);" style-hover="background:#96794E;color:#fff;">
@@ -153,20 +204,31 @@ a:hover{color:#A98B5F;}
     </a>
   </div>
   <div data-reveal="1" style="flex:0 1 460px;min-width:300px;position:relative;display:flex;justify-content:center;">
+    <div aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:520px;height:520px;border:1px solid rgba(182,148,96,0.30);border-radius:50%;pointer-events:none;"></div>
+    <div aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:600px;border:1px dashed rgba(182,148,96,0.22);border-radius:50%;pointer-events:none;"></div>
     <div style="position:relative;width:380px;height:480px;border-radius:190px 190px 20px 20px;overflow:hidden;border:1px solid rgba(182,148,96,0.35);box-shadow:0 30px 60px rgba(110,88,52,0.20);">
+      <div aria-hidden="true" style="position:absolute;inset:10px;border:1px solid rgba(253,251,247,0.6);border-radius:180px 180px 12px 12px;z-index:2;pointer-events:none;"></div>
       <video src="uploads/asset/videos/02-spring-archive.mp4" muted="{{ true }}" autoPlay="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" aria-label="Intérieur de la boutique Luxury Dress by Chichii" style="display:block;width:100%;height:100%;object-fit:cover;"></video>
     </div>
   </div>
 </section>
 <footer data-screen-label="Pied de page" style="background:#F8F4ED;border-top:1px solid rgba(182,148,96,0.35);padding:64px 108px 40px 108px;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;">
+  <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:48px;">
+    <span style="width:90px;height:1px;background:linear-gradient(90deg,rgba(182,148,96,0),rgba(182,148,96,0.55));"></span>
+    <span style="width:6px;height:6px;border:1px solid #B69460;transform:rotate(45deg);"></span>
+    <span style="width:4px;height:4px;background:#B69460;transform:rotate(45deg);"></span>
+    <span style="width:6px;height:6px;border:1px solid #B69460;transform:rotate(45deg);"></span>
+    <span style="width:90px;height:1px;background:linear-gradient(90deg,rgba(182,148,96,0.55),rgba(182,148,96,0));"></span>
+  </div>
   <div style="display:flex;flex-wrap:wrap;gap:44px;justify-content:space-between;align-items:flex-start;margin-bottom:48px;">
     <div style="max-width:300px;">
-      <img src="uploads/asset/logo/503971967_18048174587386881_2036036649405026795_n-Photoroom.png" alt="Logo By Chichii" style="height:64px;width:auto;display:block;mix-blend-mode:multiply;margin-bottom:14px;">
+      <img src="uploads/asset/logo/503971967_18048174587386881_2036036649405026795_n-Photoroom.png" alt="Logo By Chichii" style="height:87px;width:auto;display:block;mix-blend-mode:multiply;margin-bottom:14px;">
       <p style="margin:0;font-size:13px;font-weight:300;line-height:1.7;color:#5C5348;">Location de robes haute couture pour mariages, soirées, fiançailles et événements d'exception.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px;">
       <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#A98B5F;margin-bottom:4px;">Navigation</span>
       <a href="#accueil" style="font-size:13px;">Accueil</a>
+      <a href="#collection" style="font-size:13px;">Collection</a>
       
       
       <a href="#galerie" style="font-size:13px;">Galerie</a>
@@ -222,8 +284,17 @@ class Component extends DCLogic {
       { src: "uploads/asset/videos/03-amara-odile.mp4", alt: "Robes Amara et Odile en boutique" },
       { src: "uploads/asset/videos/06-spring-archive-ii.mp4", alt: "Collection printemps en boutique" }
     ];
+    const mob = matchMedia('(max-width: 900px)').matches;
+    const slideshowProps = {
+      slides: dresses.map((d) => ({ image: { src: d.img, alt: d.aria }, title: d.name + "\n" + d.label })),
+      cardWidth: mob ? 260 : 400, cardHeight: mob ? 380 : 540,
+      radius: 2, tilt: 10, sideTilt: 5, gap: mob ? 6 : 9, opacity: 55,
+      autoplay: false, showTitle: true, titleColor: "#FBF8F2",
+      titleFont: { fontFamily: "'Cormorant Garamond', serif", fontSize: mob ? "22px" : "28px", fontWeight: 500, letterSpacing: "1.5px", textTransform: "uppercase" },
+      transition: { duration: 0.6, delay: 2.5, ease: [0.22, 1, 0.36, 1] }
+    };
     return {
-      dresses, colCards, advantages, steps, galerie,
+      dresses, colCards, advantages, steps, galerie, slideshowProps,
       waNumber: this.props.whatsappNumber ?? "33612345678",
       showRibbons: this.props.showRibbons ?? true,
       navRef: (el) => { this.navEl = el; },
@@ -278,7 +349,7 @@ class Component extends DCLogic {
       if (this.navLinksEl) this.navLinksEl.style.display = mob ? 'none' : 'flex';
       if (this.navEl) {
         const logo = this.navEl.querySelector('img');
-        if (logo) logo.style.height = mob ? '42px' : '52px';
+        if (logo) logo.style.height = mob ? '70px' : '87px';
       }
       this.navSolid = undefined; // force nav padding reapply for new breakpoint
       if (this.heroCopyEl) {
@@ -296,6 +367,7 @@ class Component extends DCLogic {
         this.waBtnEl.style.boxSizing = 'border-box';
       }
       const secPads = {
+        'Collection': mob ? '90px 0 80px 0' : '140px 56px 130px 56px',
         'Comment ça marche': mob ? '90px 24px 80px 24px' : '150px 108px 140px 108px',
         'Galerie': mob ? '0 24px 90px 24px' : '0 56px 150px 108px',
         'Réservation': mob ? '90px 24px 90px 24px' : '140px 56px 140px 108px',
@@ -307,12 +379,12 @@ class Component extends DCLogic {
       });
       if (!mob && this.state.menuOpen) this.setState({ menuOpen: false });
       if (this.sceneEl) this.sceneEl.style.height = mob ? '470px' : '660px';
-      const podium = this.sceneEl && this.sceneEl.querySelector('img[src*="poduim"]');
-      if (podium) podium.style.width = mob ? '300px' : '450px';
+      const podium = this.sceneEl && this.sceneEl.querySelector('img[src*="podium-white"]');
+      if (podium) { podium.style.width = mob ? 'min(520px, 96vw)' : '690px'; podium.style.bottom = mob ? '-56px' : '-88px'; }
       if (this.dressEl) {
         this.dressEl.style.width = mob ? '204px' : '300px';
         this.dressEl.style.marginLeft = mob ? '-102px' : '-150px';
-        this.dressEl.style.bottom = mob ? '172px' : '258px';
+        this.dressEl.style.bottom = mob ? '150px' : '205px';
       }
       this.cards.forEach((el) => { if (el) el.style.width = mob ? '106px' : '148px'; });
     };
