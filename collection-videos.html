@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth;}
+html,body{margin:0;padding:0;background:#F8F4ED;}
+a{color:#2B2723;text-decoration:none;}
+a:hover{color:#A98B5F;}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}}
+</style>
+</helmet>
+<div data-screen-label="En-tête" style="position:relative;min-height:60vh;overflow:hidden;background:radial-gradient(1100px 600px at 72% 40%, #F2E9DB 0%, rgba(242,233,219,0) 60%),radial-gradient(760px 520px at 4% 4%, rgba(213,183,135,0.22), rgba(213,183,135,0) 62%), #F8F4ED;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;">
+  <div aria-hidden="true" style="position:absolute;inset:16px;border:1px solid rgba(182,148,96,0.30);pointer-events:none;z-index:5;"></div>
+  <div aria-hidden="true" style="position:absolute;inset:23px;border:1px solid rgba(182,148,96,0.14);pointer-events:none;z-index:5;"></div>
+  <span aria-hidden="true" style="position:absolute;left:12px;top:12px;width:9px;height:9px;border:1px solid rgba(169,139,95,0.75);background:#F8F4ED;transform:rotate(45deg);z-index:6;"></span>
+  <span aria-hidden="true" style="position:absolute;right:12px;top:12px;width:9px;height:9px;border:1px solid rgba(169,139,95,0.75);background:#F8F4ED;transform:rotate(45deg);z-index:6;"></span>
+  <nav ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 52px;box-sizing:border-box;transition:background .4s ease, padding .4s ease, box-shadow .4s ease;">
+    <a href="index.html#accueil" aria-label="Luxury Dress by Chichii — Accueil" style="display:flex;align-items:center;gap:14px;">
+      <img src="uploads/asset/logo/503971967_18048174587386881_2036036649405026795_n-Photoroom.png" alt="Logo By Chichii" style="height:87px;width:auto;display:block;mix-blend-mode:multiply;">
+      <span ref="{{ wordmarkRef }}" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#6E6357;white-space:nowrap;">Luxury Dress by Chichii</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:36px;">
+      <div ref="{{ navLinksRef }}" style="display:flex;align-items:center;gap:36px;">
+        <a href="index.html#accueil" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Accueil</a>
+        <a href="#videos" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#A98B5F;">Collection</a>
+        <a href="index.html#galerie" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Galerie</a>
+        <a href="index.html#contact" style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;">Contact</a>
+      </div>
+      <button aria-label="Ouvrir le menu" onClick="{{ toggleMenu }}" style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(169,139,95,0.55);background:rgba(255,255,255,0.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;" style-hover="border-color:#A98B5F;background:#fff;">
+        <span style="display:block;width:16px;height:1px;background:#2B2723;"></span>
+        <span style="display:block;width:10px;height:1px;background:#A98B5F;"></span>
+      </button>
+    </div>
+  </nav>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;top:0;left:0;right:0;z-index:190;background:rgba(248,244,237,0.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:104px 28px 38px 28px;display:flex;flex-direction:column;gap:26px;box-shadow:0 18px 40px rgba(110,88,52,0.14);border-bottom:1px solid rgba(182,148,96,0.3);">
+      <a href="index.html#accueil" onClick="{{ closeMenu }}" style="font-size:13px;letter-spacing:3px;text-transform:uppercase;">Accueil</a>
+      <a href="#videos" onClick="{{ closeMenu }}" style="font-size:13px;letter-spacing:3px;text-transform:uppercase;">Collection Vidéo</a>
+      <a href="index.html#galerie" onClick="{{ closeMenu }}" style="font-size:13px;letter-spacing:3px;text-transform:uppercase;">Galerie</a>
+      <a href="index.html#contact" onClick="{{ closeMenu }}" style="font-size:13px;letter-spacing:3px;text-transform:uppercase;">Contact</a>
+    </div>
+  </sc-if>
+  <div data-reveal="1" style="max-width:720px;margin:0 auto;padding:220px 24px 80px 24px;text-align:center;position:relative;z-index:10;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:26px;">
+      <span style="display:block;width:44px;height:1px;background:#B69460;"></span>
+      <span style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#A98B5F;">Collection en mouvement</span>
+      <span style="display:block;width:44px;height:1px;background:#B69460;"></span>
+    </div>
+    <h1 style="margin:0 0 24px 0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(42px,5vw,72px);line-height:1.05;letter-spacing:1px;text-transform:uppercase;text-wrap:balance;">Nos robes<br><em style="font-style:italic;color:#A98B5F;"></em></h1>
+    <p style="margin:0;max-width:480px;margin-left:auto;margin-right:auto;font-size:16px;font-weight:300;line-height:1.75;color:#5C5348;text-wrap:pretty;">Essayages, fittings et coulisses en boutique — chaque robe prend vie sous toutes les coutures.</p>
+  </div>
+</div>
+<section id="videos" data-screen-label="Collection Vidéo" style="position:relative;background:radial-gradient(760px 460px at 8% 10%, rgba(213,183,135,0.20), rgba(213,183,135,0) 60%), #F8F4ED;padding:70px 56px 150px 56px;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;overflow:hidden;">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:34px;max-width:1320px;margin:0 auto;">
+    <sc-for list="{{ products }}" as="p" hint-placeholder-count="8">
+      <div data-reveal="1" style="position:relative;border-radius:22px;overflow:hidden;border:1px solid rgba(182,148,96,0.35);box-shadow:0 24px 50px rgba(110,88,52,0.16);background:#FDFBF7;">
+        <div style="position:relative;width:100%;aspect-ratio:9/13;overflow:hidden;">
+          <video ref="{{ videoRef }}" data-idx="{{ $index }}" src="{{ p.src }}" muted="{{ true }}" autoPlay="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" aria-label="{{ p.alt }}" style="display:block;width:100%;height:100%;object-fit:cover;"></video>
+          <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to top, rgba(43,39,35,0.72) 0%, rgba(43,39,35,0) 42%);pointer-events:none;"></div>
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:20px;box-sizing:border-box;">
+            
+            
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 20px;">
+          <span style="font-size:11px;font-weight:300;color:#5C5348;">{{ p.desc }}</span>
+          <a href="https://wa.me/{{ waNumber }}" target="_blank" rel="noopener" aria-label="Réserver {{ p.name }} sur WhatsApp" style="flex:0 0 auto;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8A6F42;border-bottom:1px solid #B69460;padding-bottom:2px;white-space:nowrap;">Réserver</a>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+<footer data-screen-label="Pied de page" style="background:#F8F4ED;border-top:1px solid rgba(182,148,96,0.35);padding:64px 108px 40px 108px;font-family:'Jost',sans-serif;color:#2B2723;box-sizing:border-box;">
+  <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:48px;">
+    <span style="width:90px;height:1px;background:linear-gradient(90deg,rgba(182,148,96,0),rgba(182,148,96,0.55));"></span>
+    <span style="width:6px;height:6px;border:1px solid #B69460;transform:rotate(45deg);"></span>
+    <span style="width:4px;height:4px;background:#B69460;transform:rotate(45deg);"></span>
+    <span style="width:6px;height:6px;border:1px solid #B69460;transform:rotate(45deg);"></span>
+    <span style="width:90px;height:1px;background:linear-gradient(90deg,rgba(182,148,96,0.55),rgba(182,148,96,0));"></span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:44px;justify-content:space-between;align-items:flex-start;margin-bottom:48px;">
+    <div style="max-width:300px;">
+      <img src="uploads/asset/logo/503971967_18048174587386881_2036036649405026795_n-Photoroom.png" alt="Logo By Chichii" style="height:87px;width:auto;display:block;mix-blend-mode:multiply;margin-bottom:14px;">
+      <p style="margin:0;font-size:13px;font-weight:300;line-height:1.7;color:#5C5348;">Location de robes haute couture pour mariages, soirées, fiançailles et événements d'exception.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#A98B5F;margin-bottom:4px;">Navigation</span>
+      <a href="index.html#accueil" style="font-size:13px;">Accueil</a>
+      <a href="#videos" style="font-size:13px;">Collection</a>
+      <a href="index.html#galerie" style="font-size:13px;">Galerie</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#A98B5F;margin-bottom:4px;">Contact</span>
+      <a href="https://wa.me/{{ waNumber }}" target="_blank" rel="noopener" style="font-size:13px;">WhatsApp</a>
+      <a href="https://www.instagram.com/luxury___dress_bychichii/" target="_blank" rel="noopener" style="font-size:13px;">Instagram</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener" style="font-size:13px;">Facebook</a>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(182,148,96,0.2);padding-top:22px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:11px;letter-spacing:1px;color:#8A7D6C;">
+    <span>© 2026 Luxury Dress by Chichii</span>
+    <span>Haute couture · Mariage · Soirée · Fiançailles</span>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { menuOpen: false, unmutedIdx: -1 };
+  renderVals() {
+    const products = [
+      { name: "Noor", label: "Mariage", src: "uploads/01-noor-fitting.mp4", alt: "Essayage de la robe Noor", desc: "Essayage en boutique" },
+      { name: "Archive Printemps", label: "Soirée", src: "uploads/02-spring-archive.mp4", alt: "Collection printemps en boutique", desc: "Coulisses collection" },
+      { name: "Amara & Odile", label: "Fiançailles", src: "uploads/03-amara-odile.mp4", alt: "Robes Amara et Odile en boutique", desc: "Duo fiançailles" },
+      { name: "Noor II", label: "Cérémonie", src: "uploads/05-noor-fitting-ii.mp4", alt: "Deuxième essayage de la robe Noor", desc: "Essayage détaillé" },
+      { name: "Archive Printemps II", label: "Invitées", src: "uploads/06-spring-archive-ii.mp4", alt: "Suite de la collection printemps", desc: "Coulisses collection" },
+      { name: "Amara", label: "Haute Couture", src: "uploads/Nouvelle collection 🔥🔥🔥.mp4", alt: "Nouvelle collection haute couture", desc: "Nouvelle arrivée" },
+      { name: "Yosr", label: "Soirée", src: "uploads/Nouvelle collection 😍💛.mp4", alt: "Nouvelle collection robe de soirée", desc: "Nouvelle arrivée" },
+      { name: "Farah", label: "Mariage", src: "uploads/Nouvelle collection 🤩💚.mp4", alt: "Nouvelle collection robe de mariage", desc: "Nouvelle arrivée" },
+      { name: "Selma", label: "Fiançailles", src: "uploads/يا ريتك 🫀❤️Robe - @luxury___dress_bychichii 👗 Makeup & haïr - @beauty_center_farah_fatma 💄 Re.mp4", alt: "Robe fiançailles en boutique", desc: "Essayage en boutique" },
+      { name: "Ines", label: "Soirée", src: "uploads/AQM9lPbgzLeH27lI3KZb1fpt3ZGAK4LpsXdV48U22oicACQoZu-DKwngoDa-viYcFY69-sw75szJ3rZwYrnIOLrriVOxH8t8.mp4", alt: "Robe de soirée en boutique", desc: "Essayage en boutique" },
+      { name: "Sarra", label: "Fiançailles", src: "uploads/AQMOzub3HzZEc97t4uRwijQcPjrTmuyBQqvPidMT2r70In102Ti7KrWFl9ys6Ivv6yZCfGQGVJ7yBxuGo8xfSgdfgpBd8lda.mp4", alt: "Robe de fiançailles en boutique", desc: "Essayage en boutique" },
+      { name: "Malak", label: "Invitées", src: "uploads/Felt like a princess 👑🦋📸- @yassmin_jmal explore model.mp4", alt: "Robe invitée en boutique", desc: "Coulisses collection" },
+      { name: "Emna", label: "Haute Couture", src: "uploads/La simplicité fait la beauté 🤩💛elegance makeup traditional fashionstyle instgram.mp4", alt: "Robe haute couture en boutique", desc: "Essayage en boutique" },
+      { name: "Hiba", label: "Mariage", src: "uploads/Machallah🧿✨🤍.mp4", alt: "Robe de mariage en boutique", desc: "Essayage en boutique" },
+      { name: "Lina", label: "Traditionnelle", src: "uploads/الزين العربي 💚🤩Reel maker @yassmin_jmal instagram fyp viralvideos newcollection fashionis.mp4", alt: "Robe traditionnelle en boutique", desc: "Nouvelle arrivée" },
+      { name: "Chaima", label: "Fiançailles", src: "uploads/الضخامة و الفيانة 🤩🩷.mp4", alt: "Robe de fiançailles en boutique", desc: "Essayage en boutique" },
+      { name: "Dorra", label: "Soirée", src: "uploads/شوف شوف شوف يا حبيبي شوف 🤩.mp4", alt: "Robe de soirée en boutique", desc: "Essayage en boutique" },
+      { name: "Yasmine", label: "Mariage", src: "uploads/نستنى فيه يروح 🤩🩵New collection 🩵.mp4", alt: "Nouvelle collection robe de mariage", desc: "Nouvelle arrivée" },
+      { name: "Salma", label: "Haute Couture", src: "uploads/وجه القمر 🌕🤩قلبي 😜🙈😍newcollection instagram fyp viralvideos makeup fashionista.mp4", alt: "Nouvelle collection haute couture", desc: "Nouvelle arrivée" },
+      { name: "Nesrine", label: "Soirée", src: "uploads/🤩❤️.mp4", alt: "Robe de soirée en boutique", desc: "Essayage en boutique" },
+      { name: "Cyrine", label: "Fiançailles", src: "uploads/🧜🏻_♀️🤩instagram dress makeup viral fyp.mp4", alt: "Robe de fiançailles en boutique", desc: "Essayage en boutique" }
+    ];
+    return {
+      products,
+      waNumber: "33612345678",
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      navRef: (el) => { this.navEl = el; },
+      wordmarkRef: (el) => { this.wordmarkEl = el; if (el && this.applyBreakpoint) this.applyBreakpoint(); },
+      navLinksRef: (el) => { this.navLinksEl = el; if (el && this.applyBreakpoint) this.applyBreakpoint(); },
+      videoRef: (el) => { if (el) (this.videos || (this.videos = []))[+el.dataset.idx] = el; }
+    };
+  }
+  componentDidMount() {
+    this.mq = matchMedia('(max-width: 900px)');
+    this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.applyBreakpoint = () => {
+      const mob = this.mq.matches;
+      if (this.wordmarkEl) this.wordmarkEl.style.display = mob ? 'none' : '';
+      if (this.navLinksEl) this.navLinksEl.style.display = mob ? 'none' : 'flex';
+      if (this.navEl) {
+        const logo = this.navEl.querySelector('img');
+        if (logo) logo.style.height = mob ? '70px' : '87px';
+      }
+      const secPads = {
+        'En-tête': null,
+        'Collection Vidéo': mob ? '50px 24px 90px 24px' : '70px 56px 150px 56px',
+        'Pied de page': mob ? '56px 24px 32px 24px' : '64px 108px 40px 108px'
+      };
+      Object.keys(secPads).forEach((label) => {
+        if (!secPads[label]) return;
+        const el = document.querySelector('[data-screen-label="' + label + '"]');
+        if (el) el.style.padding = secPads[label];
+      });
+      if (!mob && this.state.menuOpen) this.setState({ menuOpen: false });
+    };
+    this.mq.addEventListener('change', this.applyBreakpoint);
+    this.applyBreakpoint();
+    const revealEls = Array.from(document.querySelectorAll('[data-reveal]'));
+    if (!this.reduced && 'IntersectionObserver' in window) {
+      revealEls.forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(26px)';
+        el.style.transition = 'opacity .9s ease ' + ((i % 6) * 0.06) + 's, transform .9s ease ' + ((i % 6) * 0.06) + 's';
+      });
+      this.io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            en.target.style.opacity = '1';
+            en.target.style.transform = 'translateY(0)';
+            this.io.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach((el) => this.io.observe(el));
+    }
+    const allVideos = Array.from(document.querySelectorAll('video'));
+    allVideos.forEach((v) => {
+      v.loop = true; v.playsInline = true;
+      v.pause();
+      if (!v.dataset.loopBound) {
+        v.dataset.loopBound = '1';
+        v.addEventListener('ended', () => { v.currentTime = 0; if (v.dataset.inView === '1') v.play().catch(() => {}); });
+      }
+    });
+    this.visIo = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        const v = en.target;
+        v.dataset.inView = en.isIntersecting ? '1' : '0';
+        if (en.isIntersecting) { if (v.readyState >= 2) v.play().catch(() => {}); }
+        else v.pause();
+      });
+    }, { threshold: 0.25 });
+    allVideos.forEach((v) => this.visIo.observe(v));
+    this.last = performance.now();
+    this.tick = (now) => {
+      const mob = this.mq.matches;
+      const sc = window.scrollY > 40;
+      if (this.navEl && sc !== this.navSolid) {
+        this.navSolid = sc;
+        this.navEl.style.background = sc ? 'rgba(248,244,237,0.82)' : 'transparent';
+        this.navEl.style.backdropFilter = sc ? 'blur(14px)' : 'none';
+        this.navEl.style.webkitBackdropFilter = sc ? 'blur(14px)' : 'none';
+        this.navEl.style.boxShadow = sc ? '0 8px 30px rgba(110,88,52,0.10)' : 'none';
+        this.navEl.style.padding = mob ? (sc ? '10px 20px' : '16px 20px') : (sc ? '14px 52px' : '24px 52px');
+      }
+      this.raf = requestAnimationFrame(this.tick);
+    };
+    this.raf = requestAnimationFrame(this.tick);
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    if (this.visIo) this.visIo.disconnect();
+    this.mq.removeEventListener('change', this.applyBreakpoint);
+  }
+}
+
+</script>
+</body>
+</html>
