@@ -251,7 +251,7 @@ a:hover{color:#A98B5F;}
     <span>Haute couture · Mariage · Soirée · Fiançailles</span>
   </div>
 </footer></x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:880},&quot;rotationDuration&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:34,&quot;min&quot;:20,&quot;max&quot;:60,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Orbite&quot;},&quot;radiusX&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:370,&quot;min&quot;:260,&quot;max&quot;:450,&quot;step&quot;:5,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Orbite&quot;},&quot;showRibbons&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Décor&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;33612345678&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:880},&quot;rotationDuration&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:34,&quot;min&quot;:20,&quot;max&quot;:60,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Orbite&quot;},&quot;radiusX&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:370,&quot;min&quot;:260,&quot;max&quot;:450,&quot;step&quot;:5,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Orbite&quot;},&quot;showRibbons&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Décor&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;21622238265&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
 class Component extends DCLogic {
   cards = [];
   state = { menuOpen: false };
@@ -300,7 +300,7 @@ class Component extends DCLogic {
     };
     return {
       dresses, colCards, advantages, steps, galerie, slideshowProps,
-      waNumber: this.props.whatsappNumber ?? "33612345678",
+      waNumber: this.props.whatsappNumber ?? "21622238265",
       showRibbons: this.props.showRibbons ?? true,
       navRef: (el) => { this.navEl = el; },
       wordmarkRef: (el) => { this.wordmarkEl = el; if (el && this.applyBreakpoint) this.applyBreakpoint(); },
